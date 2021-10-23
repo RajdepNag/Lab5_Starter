@@ -1,6 +1,10 @@
 // expose.js
 
 window.addEventListener('DOMContentLoaded', init);
+const jsConfetti = new JSConfetti();
+
+
+
 
 function init() {
   // TODO
@@ -16,8 +20,8 @@ function init() {
    if (horn.value != "select") {
      page_images[0].src = "assets/images/" + horn.value + ".svg"; 
      sound.src = "assets/audio/" + horn.value + ".mp3";
-     //console.log(sound.src);
-   }
+    
+    }
 
   });  
 
@@ -58,6 +62,12 @@ play_sound.addEventListener('click', function(){
     
     audio_name.src = "assets/audio/" + horn.value + ".mp3";
     audio_name.volume = noise.value/parseFloat(100);
+
+    if(horn.value == "party-horn" && noise.value != 0) {
+
+      jsConfetti.addConfetti();
+
+    }
         
     audio_name.play();
     
